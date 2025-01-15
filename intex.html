@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Commands Showcase</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1e3c72, #2a5298); /* Professional gradient background */
+            color: #e0e0e0;
+        }
+
+        header {
+            background-color: rgba(44, 62, 80, 0.9);
+            color: white;
+            padding: 50px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header img {
+            width: 200px;
+            height: 150px;
+            margin-right: 10px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3.5rem;
+            font-family: 'Courier New', Courier, monospace; /* Custom font style */
+            font-weight: bold;
+        }
+
+        nav {
+            background-color: rgba(52, 73, 94, 0.9);
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #00bcd4;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        section {
+            background-color: rgba(44, 44, 44, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            color: #e0e0e0;
+            border-bottom: 2px solid #00bcd4;
+            padding-bottom: 5px;
+        }
+
+        .command-box {
+            border: 1px solid #555;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            background-color: #333;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .command-box img,
+        .command-box i {
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        .command-box:hover {
+            background-color: #00bcd4;
+            color: black;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: rgba(52, 73, 94, 0.9);
+            color: white;
+            margin-top: 20px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow: auto;
+        }
+
+        .modal-content {
+            background-color: rgba(44, 62, 80, 0.9);
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            color: #e0e0e0;
+            text-align: center;
+        }
+
+        .modal-content h2 {
+            color: #00bcd4;
+            margin-bottom: 20px;
+        }
+
+        .modal-content pre {
+            background-color: #333;
+            color: #00ff00;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .close {
+            color: white;
+            font-size: 2rem;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: #00bcd4;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="image1.png" alt="Linux Logo">
+        <h1>Linux Commands Showcase</h1>
+    </header>
+    <nav>
+        <a href="#sort">sort</a>
+        <a href="#awk">awk</a>
+        <a href="#sed">sed</a>
+        <a href="#cut">cut</a>
+        <a href="#tr">tr</a>
+        <a href="#echo">echo</a>
+        <a href="#export">export</a>
+        <a href="#history">history</a>
+        <a href="#rsync">rsync</a>
+        <a href="#screen">screen</a>
+        <a href="#uniq">uniq</a>
+    </nav>
+    <main>
+        <!-- Command Sections -->
+        <section id="sort">
+            <h2><p style="font-family: 'Tempus Sans ITC', sans-serif;">sort</p>
+            </h2>
+            <div class="command-box" onclick="openModal('sort-modal')">
+                <i class="fas fa-sort"></i> sort
+            </div>
+        </section>
+
+        <section id="awk">
+            <h2><p style="font-family: 'Tempus Sans ITC', sans-serif;">awk</p>
+            </h2>
+            <div class="command-box" onclick="openModal('awk-modal')">
+                <i class="fas fa-code"></i> awk
+            </div>
+        </section>
+        <section id="sed">
+            <h2><p style="font-family: 'Tempus Sans ITC', sans-serif;">sed</p>
+
+            </h2>
+            <div class="command-box" onclick="openModal('sed-modal')">
+                <i class="fas fa-code"></i> sed
+            </div>
+        </section>
+        <section id="cut">
+            <h2><p style="font-family: 'Tempus Sans ITC', sans-serif;">cut</p>
+
+            </h2>
+            <div class="command-box" onclick="openModal('cut-modal')">
+                <i class="fas fa-code"></i> cut
+            </div>
+        </section>
+        <section id="tr">
+            <h2><p style="font-family: 'Tempus Sans ITC', sans-serif;">tr</p>
+
+            </h2>
+            <div class="command-box" onclick="openModal('tr-modal')">
+                <i class="fas fa-code"></i> tr
+            </div>
+        </section>
+        <section id="echo">
+            <h2><p style="font-family: 'Tempus Sans ITC', sans-serif;">echo</p>
+
+            </h2>
+            <div class="command-box" onclick="openModal('echo-modal')">
+                <i class="fas fa-code"></i> echo
+            </div>
+        </section>
+        <section id="export">
+            <h2><p style="font-family: 'Tempus Sans ITC', sans-serif;">export</p>
+
+            </h2>
+            <div class="command-box" onclick="openModal('export-modal')">
+                <i class="fas fa-code"></i> export
+            </div>
+        </section>
+        <section id="history">
+            <h2><p style="font-family: 'Tempus Sans ITC', sans-serif;">history</p>
+
+            </h2>
+            <div class="command-box" onclick="openModal('history-modal')">
+                <i class="fas fa-code"></i> history
+            </div>
+        </section>
+        <section id="rsync">
+            <h2><p style="font-family: 'Tempus Sans ITC', sans-serif;">rsync</p>
+
+            </h2>
+            <div class="command-box" onclick="openModal('rsync-modal')">
+                <i class="fas fa-code"></i> rsync
+            </div>
+        </section>
+        <section id="screen">
+            <h2><p style="font-family: 'Tempus Sans ITC', sans-serif;">screen</p>
+
+            </h2>
+            <div class="command-box" onclick="openModal('screen-modal')">
+                <i class="fas fa-code"></i> screen
+            </div>
+        </section>
+        <section id="uniq">
+            <h2> <p style="font-family: 'Tempus Sans ITC', sans-serif;">uniq</p>
+
+            </h2>
+            <div class="command-box" onclick="openModal('uniq-modal')">
+                <i class="fas fa-code"></i> uniq
+            </div>
+        </section>
+        
+        <!-- Add other command sections here -->
+
+    </main>
+    <footer>
+        <p>&copy; 2025 Linux Commands Showcase. All rights reserved.</p>
+    </footer>
+
+    <!-- Modals -->
+    <div id="sort-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('sort-modal')">&times;</span>
+            <h2><p style="font-family: 'Eras Medium ITC', sans-serif;">sort</p>
+            </h2>
+           
+            <p style="text-align: left;"><strong>Definition:</strong>The sort command is used to arrange the lines in a text file or input stream in a specific order, either alphabetically or numerically. By default, it sorts in ascending order, but options can modify this behavior. It is often used for organizing data files or logs. For instance, you can sort a list of names alphabetically or numbers numerically. </p>
+<p style="text-align: left;"><strong>Purpose:</strong> To sort lines in a file or input.</p>
+<p style="text-align: left;"><strong>Usage:</strong> <code>sort file.txt</code></p>
+<p style="text-align: left;"><strong>Example:</strong></p>
+<pre style="text-align: left;"><code>$ sort names.txt</code></pre>
+
+            <figure style="text-align: center; margin-top: 20px;">
+                <img src="ss1.jpg.png" alt="Sort command example"
+                    style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                <figcaption style="margin-top: 10px; font-style: italic; color: #555;">Figure: Example of the sort command</figcaption>
+            </figure>  
+        </div>
+    </div>
+    
+    <div id="awk-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('awk-modal')">&times;</span>
+            <h2><p style="font-family: 'Eras Medium ITC', sans-serif;">awk</p></h2>
+           
+            <p style="text-align: left;"><strong>Definition:</strong> The awk command is a powerful text-processing tool designed for pattern scanning and data manipulation. It reads text line by line, searches for specific patterns, and performs actions like extracting fields, formatting data, or performing arithmetic. It is widely used in log analysis, data extraction, and reporting.</p>
+            <p style="text-align: left;"><strong>Purpose:</strong> To process and manipulate text data by applying patterns.</p>
+            <p style="text-align: left;"><strong>Usage:</strong> <code>awk '{print $1}' file.txt</code></p>
+            <p style="text-align: left;"><strong>Example:</strong></p>
+            <pre style="text-align: left;"><code>$ awk '{print $1}' data.txt</code></pre>
+            <figure style="text-align: center; margin-top: 20px;">
+                <img src="ss2.jpg.png" alt="Sort command example"
+                    style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                <figcaption style="margin-top: 10px; font-style: italic; color: #555;">Figure: Example of the awk command</figcaption>
+            </figure> 
+        </div>
+    </div>
+    
+    <div id="sed-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('sed-modal')">&times;</span>
+            <h2><p style="font-family: 'Eras Medium ITC', sans-serif;">sed</p></h2>
+           
+            <p style="text-align: left;"><strong>Definition:</strong> The sed (stream editor) command is a versatile tool for making automated edits to text files or streams. It can search, replace, delete, or insert text based on patterns. It's commonly used in shell scripting for text preprocessing and transformation tasks.
+
+            </p>
+            <p style="text-align: left;"><strong>Purpose:</strong> To transform text in files or streams efficiently.</p>
+            <p style="text-align: left;"><strong>Usage:</strong> <code>sed 's/old/new/g' file.txt</code></p>
+            <p style="text-align: left;"><strong>Example:</strong></p>
+            <pre style="text-align: left;"><code>$ sed 's/hello/hi/g' greetings.txt</code></pre>
+            <figure style="text-align: center; margin-top: 20px;">
+                <img src="ss3.jpg.png" alt="Sort command example"
+                    style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                <figcaption style="margin-top: 10px; font-style: italic; color: #555;">Figure: Example of the sed command</figcaption>
+            </figure> 
+        </div>
+    </div>
+    <div id="cut-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('cut-modal')">&times;</span>
+            <h2><p style="font-family: 'Eras Medium ITC', sans-serif;">cut</p></h2>
+            
+            <p style="text-align: left;"><strong>Definition:</strong> The cut command extracts sections of each line from a file or input stream, based on character positions, bytes, or delimiters. It is particularly useful for handling structured data, such as extracting specific columns from a CSV file.
+
+            </p>
+            <p style="text-align: left;"><strong>Purpose:</strong> To extract specific columns or fields from a file.</p>
+            <p style="text-align: left;"><strong>Usage:</strong> <code>cut -d',' -f2 file.csv</code></p>
+            <p style="text-align: left;"><strong>Example:</strong></p>
+            <pre style="text-align: left;"><code>$ cut -d',' -f2 data.csv</code></pre>
+            <figure style="text-align: center; margin-top: 20px;">
+                <img src="ss4.jpg.png" alt="Sort command example"
+                    style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                <figcaption style="margin-top: 10px; font-style: italic; color: #555;">Figure: Example of the cut command</figcaption>
+            </figure> 
+        </div>
+    </div>
+    <div id="tr-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('tr-modal')">&times;</span>
+            <h2><p style="font-family: 'Eras Medium ITC', sans-serif;">tr</p></h2>
+            
+            <p style="text-align: left;"><strong>Definition:</strong> The tr command translates or deletes characters from the input. It's often used for tasks like converting text to uppercase or lowercase, replacing spaces with tabs, or removing unwanted characters from a stream.</p>
+            <p style="text-align: left;"><strong>Purpose:</strong> To transform characters in text by translating or deleting them.</p>
+            <p style="text-align: left;"><strong>Usage:</strong> <code>echo 'abc' | tr 'a-z' 'A-Z'</code></p>
+            <p style="text-align: left;"><strong>Example:</strong></p>
+            <pre style="text-align: left;"><code>$ echo 'hello' | tr 'a-z' 'A-Z'</code></pre>
+            <figure style="text-align: center; margin-top: 20px;">
+                <img src="ss5.jpg.png" alt="Sort command example"
+                    style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                <figcaption style="margin-top: 10px; font-style: italic; color: #555;">Figure: Example of the tr command</figcaption>
+            </figure> 
+        </div>
+    </div>
+    <div id="echo-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('echo-modal')">&times;</span>
+            <h2><p style="font-family: 'Eras Medium ITC', sans-serif;">echo</p></h2>
+           
+            <p style="text-align: left;"><strong>Definition:</strong>The echo command displays a line of text or the value of a variable in the terminal. It's frequently used in scripts to print messages, debug outputs, or pass data to other commands. </p>
+            <p style="text-align: left;"><strong>Purpose:</strong> To display text or variables in a terminal.</p>
+            <p style="text-align: left;"><strong>Usage:</strong> <code>echo "Hello World"</code></p>
+            <p style="text-align: left;"><strong>Example:</strong></p>
+            <pre style="text-align: left;"><code>$ echo "Hello World"</code></pre>
+            <figure style="text-align: center; margin-top: 20px;">
+                <img src="ss6.jpg.png" alt="Sort command example"
+                    style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                <figcaption style="margin-top: 10px; font-style: italic; color: #555;">Figure: Example of the echo command</figcaption>
+            </figure> 
+        </div>
+    </div>
+    <div id="export-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('export-modal')">&times;</span>
+            <h2><p style="font-family: 'Eras Medium ITC', sans-serif;">export</p></h2>
+           
+            <p style="text-align: left;"><strong>Definition:</strong>The export command sets and makes environment variables available to child processes. It is essential for passing configuration values like paths or user-specific settings in scripts or during session management.</p>
+            <p style="text-align: left;"><strong>Purpose:</strong> Make variables available to processes.</p>
+            <p style="text-align: left;"><strong>Usage:</strong> <code>export VAR=value</code></p>
+            <p style="text-align: left;"><strong>Example:</strong></p>
+            <pre style="text-align: left;"><code>$ export PATH=/usr/local/bin:$PATH</code></pre>
+            <figure style="text-align: center; margin-top: 20px;">
+                <img src="ss7.jpg.png" alt="Sort command example"
+                    style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                <figcaption style="margin-top: 10px; font-style: italic; color: #555;">Figure: Example of the export command</figcaption>
+            </figure> 
+        </div>
+    </div>
+    <div id="history-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('history-modal')">&times;</span>
+            <h2><p style="font-family: 'Eras Medium ITC', sans-serif;">history</p></h2>
+            
+            <p style="text-align: left;"><strong>Definition:</strong>The history command shows a list of previously executed commands in the shell, helping users recall and reuse commands. It also allows re-execution of commands by their history number.
+
+            </p>
+            <p style="text-align: left;"><strong>Purpose:</strong> Access previous commands quickly.</p>
+            <p style="text-align: left;"><strong>Usage:</strong> <code>history</code></p>
+            <p style="text-align: left;"><strong>Example:</strong></p>
+            <pre style="text-align: left;"><code>$ history | grep "git"</code></pre>
+            <figure style="text-align: center; margin-top: 20px;">
+                <img src="ss8.jpg.png" alt="Sort command example"
+                    style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                <figcaption style="margin-top: 10px; font-style: italic; color: #555;">Figure: Example of the history command</figcaption>
+            </figure> 
+        </div>
+    </div>
+    <div id="rsync-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('rsync-modal')">&times;</span>
+            <h2><p style="font-family: 'Eras Medium ITC', sans-serif;">rsync</p></h2>
+            
+            <p style="text-align: left;"><strong>Definition:</strong> The rsync command is a fast and versatile utility for copying and synchronizing files and directories between two locations. It uses efficient data transfer methods, making it ideal for backups and remote file synchronization.</p>
+            <p style="text-align: left;"><strong>Purpose:</strong> Synchronize, transfer, and backup files.</p>
+            <p style="text-align: left;"><strong>Usage:</strong> <code>rsync -av source/ destination/</code></p>
+            <p style="text-align: left;"><strong>Example:</strong></p>
+            <pre style="text-align: left;"><code>$ rsync -av /source /backup</code></pre>
+            <figure style="text-align: center; margin-top: 20px;">
+                <img src="ss9.jpg.png" alt="Sort command example"
+                    style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                <figcaption style="margin-top: 10px; font-style: italic; color: #555;">Figure: Example of the rsync command</figcaption>
+            </figure> 
+        </div>
+    </div>
+    <div id="screen-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('screen-modal')">&times;</span>
+            <h2><p style="font-family: 'Eras Medium ITC', sans-serif;">screen</p></h2>
+            
+            <p style="text-align: left;"><strong>Definition:</strong>The screen command provides a terminal multiplexer, allowing users to create, detach, and reattach to terminal sessions. It’s invaluable for managing long-running processes, especially over remote connections.
+
+            </p>
+            <p style="text-align: left;"><strong>Purpose:</strong> Manage persistent terminal sessions..</p>
+            <p style="text-align: left;"><strong>Usage:</strong> <code>screen</code></p>
+            <p style="text-align: left;"><strong>Example:</strong></p>
+            <pre style="text-align: left;"><code>$ screen -S session_name</code></pre>
+            <figure style="text-align: center; margin-top: 20px;">
+                <img src="ss10.jpg" alt="Sort command example"
+                    style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                <figcaption style="margin-top: 10px; font-style: italic; color: #555;">Figure: Example of the screen command</figcaption>
+            </figure> 
+        </div>
+    </div>
+    <div id="uniq-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('uniq-modal')">&times;</span>
+            <h2><p style="font-family: 'Eras Medium ITC', sans-serif;">uniq</p></h2>
+            
+            <p style="text-align: left;"><strong>Definition:</strong> The uniq command filters out duplicate lines in a sorted file, leaving only unique lines. It is typically combined with the sort command for effective deduplication of data in text files.</p>
+            <p style="text-align: left;"><strong>Purpose:</strong> To find and display unique lines in a file or stream.</p>
+            <p style="text-align: left;"><strong>Usage:</strong> <code>uniq file.txt</code></p>
+            <p style="text-align: left;"><strong>Example:</strong></p>
+            <pre style="text-align: left;"><code>$ uniq sorted_file.txt</code></pre>
+            <figure style="text-align: center; margin-top: 20px;">
+                <img src="ss11.jpg.png" alt="Sort command example"
+                    style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                <figcaption style="margin-top: 10px; font-style: italic; color: #555;">Figure: Example of the uniq command</figcaption>
+            </figure> 
+        </div>
+    </div>
+
+    <!-- Add other modals here -->
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Close modal on clicking outside the content
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
